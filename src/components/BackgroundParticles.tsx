@@ -1,17 +1,18 @@
-import { useCallback } from 'react'
-import Particles from 'react-tsparticles'
-import { loadSlim } from 'tsparticles'
+import { useEffect } from 'react'
+import Particles, { initParticlesEngine } from '@tsparticles/react'
+import { loadSlim } from '@tsparticles/slim' // loadSlim provided by @tsparticles/slim
 
 const BackgroundParticles = () => {
-  const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine)
+  useEffect(() => {
+    initParticlesEngine(async (engine: any) => {
+      await loadSlim(engine)
+    })
   }, [])
 
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
-      options={{
+      options={({
         fullScreen: { enable: false, zIndex: 1 },
         particles: {
           number: { value: 80 },
@@ -32,7 +33,7 @@ const BackgroundParticles = () => {
         detectRetina: true,
         background: { color: { value: 'transparent' } },
         fpsLimit: 60
-      }}
+      } as any)}
       className="absolute inset-0 z-0"
     />
   )

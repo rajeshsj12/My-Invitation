@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react'
 import Papa from 'papaparse'
-import { Particles } from 'react-tsparticles'
-import { loadSlim } from 'tsparticles'
-import { motion, AnimatePresence } from 'react' // Note: motion is Tailwind-based here
+import Particles from '@tsparticles/react'
+import { loadSlim } from '@tsparticles/slim'
+import { AnimatePresence } from 'framer-motion' // Using framer-motion for AnimatePresence
 import Hero from './components/Hero'
 import Events from './components/Events'
 import Story from './components/Story'
